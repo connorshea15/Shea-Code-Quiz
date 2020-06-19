@@ -14,13 +14,13 @@ var questions = [
 
 // I need to create a function to display a specific question
 // I will pass "question" + questionId into the function, which has a 
-// parameter of currentQuestion
+// parameter of questions
 
-var presentQuestion = function(currentQuestion) {
+var presentQuestion = function() {
     // Create a variable for the question text
     var displayQuestion = document.createElement("h2");
     // Set the textContent of question variable to the question of my question object
-    displayQuestion.textContent = currentQuestion[questionCount].question;
+    displayQuestion.textContent = questions[questionCount].question;
     // Append the question to my page
     quizContentEl.appendChild(displayQuestion);
 
@@ -28,16 +28,15 @@ var presentQuestion = function(currentQuestion) {
     // I need to look at my examples to see where they did the div thing
     var answers = document.createElement("div");
     answers.innerHTML = 
-        "<button>" + currentQuestion[questionCount].a1 + 
-        "</button></br><button>" + currentQuestion[questionCount].a2 + 
-        "</button></br><button>" + currentQuestion[questionCount].a3 +
-        "</button></br><button>" + currentQuestion[questionCount].a4 + 
+        "<button>" + questions[questionCount].a1 + 
+        "</button></br><button>" + questions[questionCount].a2 + 
+        "</button></br><button>" + questions[questionCount].a3 +
+        "</button></br><button>" + questions[questionCount].a4 + 
         "</button>";
     quizContentEl.append(answers);
 
     quizContentEl.addEventListener("click", confirmAnswer);
 
-    // questionCount++
 };
 
 // I need a function to check the answer and it should be triggered 
@@ -52,11 +51,11 @@ var confirmAnswer = function(event) {
         window.alert("NOT EVEN CLOSE!!!");
     }
     questionCount++;
-    return presentQuestion(questions);
+    return presentQuestion();
 
 };
 
 
 
 
-presentQuestion(questions);
+presentQuestion();
