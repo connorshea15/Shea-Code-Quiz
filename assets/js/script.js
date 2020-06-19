@@ -39,7 +39,8 @@ var presentQuestion = function(currentQuestion) {
     // questionCount++
 };
 
-// I need a function to check the answer
+// I need a function to check the answer and it should be triggered 
+// by an event listener at the end of the display question function
 
 
 
