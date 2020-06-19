@@ -51,6 +51,8 @@ var confirmAnswer = function(event) {
     } else {
         window.alert("NOT EVEN CLOSE!!!");
     }
+    questionCount++;
+    return presentQuestion(questions);
 
 };
 
