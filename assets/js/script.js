@@ -16,20 +16,26 @@ var questions = [
 ];
 
 
-// I need to create a function to display a specific question
-// I will pass "question" + questionId into the function, which has a 
-// parameter of questions
+// function to start the quiz
+var startQuiz = function() {
+    contentHeading.innerText = "Coding Quiz Challenge";
+    contentArea.innerHTML = "<p>Click the button below to begin!</p></br><button id='start-button'>Start Quiz!</button>";
+    quizContentEl.addEventListener("click", presentQuestion); 
+};
 
+
+
+// function to handle presentation of questions
 var presentQuestion = function() {
     // Set my h2 elements inner text to the current question
     contentHeading.innerText = questions[questionCount].question;
     
     // Create section for the answers
     contentArea.innerHTML = 
-        "<button>1. " + questions[questionCount].a1 + 
-        "</button></br><button>2. " + questions[questionCount].a2 + 
-        "</button></br><button>3. " + questions[questionCount].a3 +
-        "</button></br><button>4. " + questions[questionCount].a4 + 
+        "<button>" + questions[questionCount].a1 + 
+        "</button></br><button>" + questions[questionCount].a2 + 
+        "</button></br><button>" + questions[questionCount].a3 +
+        "</button></br><button>" + questions[questionCount].a4 + 
         "</button>";
 
     quizContentEl.addEventListener("click", confirmAnswer); 
@@ -40,6 +46,7 @@ var presentQuestion = function() {
 var confirmAnswer = function(event) {
     // set targetEl variable equal to the element that was clicked
     var targetEl = event.target;
+    console.log(targetEl.innerText);
     // Conditional statement to check if the answer is right
     if (targetEl.textContent === questions[questionCount].correctAnswer) {
         window.alert("CORRECT!!!");
@@ -52,7 +59,4 @@ var confirmAnswer = function(event) {
     return presentQuestion();
 };
 
-
-
-
-presentQuestion();
+startQuiz();
