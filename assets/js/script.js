@@ -2,6 +2,7 @@
 var quizContentEl = document.querySelector("#quiz-content");
 //This will be my variable that controls which question is displayed
 var questionCount = 0;
+var contentHeading = document.getElementById("content-heading");
 
 
 // Let's actually make it an array of objects (Cool!!)
@@ -19,12 +20,15 @@ var questions = [
 
 var presentQuestion = function() {
     // Create a variable for the question text
-    var displayQuestion = document.createElement("h2");
+    //var displayQuestion = document.createElement("h2");
     // Set the textContent of question variable to the question of my question object
-    displayQuestion.textContent = questions[questionCount].question;
+    var displayQuestion = questions[questionCount].question;
     // Append the question to my page
-    quizContentEl.appendChild(displayQuestion);
-
+    //quizContentEl.appendChild(displayQuestion);
+    console.log(displayQuestion);
+    //contentHeading.innerText = displayQuestion;
+    contentHeading.innerText = displayQuestion;
+    /*
     // Create section for the answers
     var answers = document.createElement("div");
     answers.innerHTML = 
@@ -35,7 +39,7 @@ var presentQuestion = function() {
         "</button>";
     quizContentEl.append(answers);
 
-    quizContentEl.addEventListener("click", confirmAnswer);
+    quizContentEl.addEventListener("click", confirmAnswer); */
 };
 
 // I need a function to check the answer and it should be triggered 
