@@ -35,13 +35,17 @@ var presentQuestion = function(currentQuestion) {
         "</button>";
     quizContentEl.append(answers);
 
+    quizContentEl.addEventListener("click", confirmAnswer);
 
     // questionCount++
 };
 
 // I need a function to check the answer and it should be triggered 
 // by an event listener at the end of the display question function
+var confirmAnswer = function() {
+    console.log("The button works!");
 
+};
 
 
 
