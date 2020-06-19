@@ -16,13 +16,26 @@ var question1 = {
 // parameter of currentQuestion
 
 var presentQuestion = function(currentQuestion) {
-    
+    // Create a variable for the question text
+    var question = document.createElement("h2");
+    // Set the textContent of question variable to the question of my question object
+    question.textContent = currentQuestion.question;
+    // Append the question to my page
+    quizContentEl.appendChild(question);
+
+    // Create section for the answers
+    // I need to look at my examples to see where they did the div thing
+    var answers = document.createElement("div");
+    quizContentEl.append()
+
 };
 
 // I need a function to check the answer
 
 
 
-var test = document.createElement("h1");
-test.textContent = "hello";
-quizContentEl.appendChild(test);
+
+var i = 1;
+var functionArgument = "question" + i;
+console.log(functionArgument);
+presentQuestion(functionArgument);
