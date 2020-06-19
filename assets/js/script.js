@@ -26,10 +26,10 @@ var presentQuestion = function() {
     
     // Create section for the answers
     contentArea.innerHTML = 
-        "<button>" + questions[questionCount].a1 + 
-        "</button></br><button>" + questions[questionCount].a2 + 
-        "</button></br><button>" + questions[questionCount].a3 +
-        "</button></br><button>" + questions[questionCount].a4 + 
+        "<button>1. " + questions[questionCount].a1 + 
+        "</button></br><button>2. " + questions[questionCount].a2 + 
+        "</button></br><button>3. " + questions[questionCount].a3 +
+        "</button></br><button>4. " + questions[questionCount].a4 + 
         "</button>";
 
     quizContentEl.addEventListener("click", confirmAnswer); 
