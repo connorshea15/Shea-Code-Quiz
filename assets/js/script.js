@@ -42,8 +42,9 @@ var presentQuestion = function(currentQuestion) {
 
 // I need a function to check the answer and it should be triggered 
 // by an event listener at the end of the display question function
-var confirmAnswer = function() {
-    console.log("The button works!");
+var confirmAnswer = function(event) {
+    var targetEl = event.target;
+    console.log(targetEl.textContent);
 
 };
 
