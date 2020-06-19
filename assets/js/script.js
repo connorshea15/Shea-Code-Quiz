@@ -43,8 +43,13 @@ var presentQuestion = function(currentQuestion) {
 // I need a function to check the answer and it should be triggered 
 // by an event listener at the end of the display question function
 var confirmAnswer = function(event) {
+    // set targetEl variable equal to the element that was clicked
     var targetEl = event.target;
-    console.log(targetEl.textContent);
+    if (targetEl.textContent === questions[questionCount].correctAnswer) {
+        window.alert("CORRECT!!!");
+    } else {
+        window.alert("NOT EVEN CLOSE!!!");
+    }
 
 };
 
