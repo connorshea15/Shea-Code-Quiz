@@ -2,7 +2,9 @@
 var quizContentEl = document.querySelector("#quiz-content");
 //This will be my variable that controls which question is displayed
 var questionCount = 0;
+// This is the reference to my h2 element in the body
 var contentHeading = document.getElementById("content-heading");
+// This is a reference to my content div below my h2 in the body
 var contentArea = document.getElementById("content-area");
 
 // Let's actually make it an array of objects (Cool!!)
@@ -19,15 +21,8 @@ var questions = [
 // parameter of questions
 
 var presentQuestion = function() {
-    // Create a variable for the question text
-    //var displayQuestion = document.createElement("h2");
-    // Set the textContent of question variable to the question of my question object
-    var displayQuestion = questions[questionCount].question;
-    // Append the question to my page
-    //quizContentEl.appendChild(displayQuestion);
-    console.log(displayQuestion);
-    //contentHeading.innerText = displayQuestion;
-    contentHeading.innerText = displayQuestion;
+    // Set my h2 elements inner text to the current question
+    contentHeading.innerText = questions[questionCount].question;
     
     // Create section for the answers
     contentArea.innerHTML = 
@@ -36,7 +31,6 @@ var presentQuestion = function() {
         "</button></br><button>" + questions[questionCount].a3 +
         "</button></br><button>" + questions[questionCount].a4 + 
         "</button>";
-    //quizContentEl.append(answers);
 
     quizContentEl.addEventListener("click", confirmAnswer); 
 };
@@ -56,7 +50,6 @@ var confirmAnswer = function(event) {
     }
     questionCount++;
     return presentQuestion();
-
 };
 
 
