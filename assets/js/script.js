@@ -1,5 +1,6 @@
 // Create a variable to represent the main section
 var quizContentEl = document.querySelector("#quiz-content");
+//This will be my variable that controls which question is displayed
 var questionCount = 0;
 
 
@@ -25,7 +26,6 @@ var presentQuestion = function() {
     quizContentEl.appendChild(displayQuestion);
 
     // Create section for the answers
-    // I need to look at my examples to see where they did the div thing
     var answers = document.createElement("div");
     answers.innerHTML = 
         "<button>" + questions[questionCount].a1 + 
@@ -36,7 +36,6 @@ var presentQuestion = function() {
     quizContentEl.append(answers);
 
     quizContentEl.addEventListener("click", confirmAnswer);
-
 };
 
 // I need a function to check the answer and it should be triggered 
@@ -47,8 +46,10 @@ var confirmAnswer = function(event) {
     // Conditional statement to check if the answer is right
     if (targetEl.textContent === questions[questionCount].correctAnswer) {
         window.alert("CORRECT!!!");
+        //need to add time to the clock
     } else {
         window.alert("NOT EVEN CLOSE!!!");
+        //need to take time off the clock
     }
     questionCount++;
     return presentQuestion();
