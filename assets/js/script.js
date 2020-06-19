@@ -45,6 +45,7 @@ var presentQuestion = function(currentQuestion) {
 var confirmAnswer = function(event) {
     // set targetEl variable equal to the element that was clicked
     var targetEl = event.target;
+    // Conditional statement to check if the answer is right
     if (targetEl.textContent === questions[questionCount].correctAnswer) {
         window.alert("CORRECT!!!");
     } else {
