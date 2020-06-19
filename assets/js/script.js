@@ -3,7 +3,7 @@ var quizContentEl = document.querySelector("#quiz-content");
 //This will be my variable that controls which question is displayed
 var questionCount = 0;
 var contentHeading = document.getElementById("content-heading");
-
+var contentArea = document.getElementById("content-area");
 
 // Let's actually make it an array of objects (Cool!!)
 // Let's create an object for our first question
@@ -28,18 +28,17 @@ var presentQuestion = function() {
     console.log(displayQuestion);
     //contentHeading.innerText = displayQuestion;
     contentHeading.innerText = displayQuestion;
-    /*
+    
     // Create section for the answers
-    var answers = document.createElement("div");
-    answers.innerHTML = 
+    contentArea.innerHTML = 
         "<button>" + questions[questionCount].a1 + 
         "</button></br><button>" + questions[questionCount].a2 + 
         "</button></br><button>" + questions[questionCount].a3 +
         "</button></br><button>" + questions[questionCount].a4 + 
         "</button>";
-    quizContentEl.append(answers);
+    //quizContentEl.append(answers);
 
-    quizContentEl.addEventListener("click", confirmAnswer); */
+    quizContentEl.addEventListener("click", confirmAnswer); 
 };
 
 // I need a function to check the answer and it should be triggered 
