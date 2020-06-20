@@ -16,8 +16,9 @@ var startTimer = function() {
     var countDown = function() {
         countDownEl.innerText = counter;
         counter--;
-        if (counter === -1) {
+        if (counter === -1 || questionCount === questions.length) {
             clearInterval(timer);
+            allDone();
         }
     };
     // Create the timer funciton as the quiz starts
@@ -85,7 +86,8 @@ var confirmAnswer = function(event) {
 var allDone = function() {
     // Create a new heading for the all done page
     contentHeading.innerText = "All Done!";
-
+    console.log(questions.length);
+    // Editing HTML elements to show end of quiz info
     contentArea.innerHTML = "<p>Your final score is " + counter + "</p><br/>";
     var enterHighScore = document.createElement("input");
     contentArea.appendChild(enterHighScore);
@@ -94,6 +96,4 @@ var allDone = function() {
     contentArea.appendChild(submitButton);
 };
 
-
-//startQuiz();
-allDone();
+startQuiz();
