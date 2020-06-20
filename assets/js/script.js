@@ -12,14 +12,15 @@ var contentArea = document.getElementById("content-area");
 var questions = [
     { question: "Commonly used data types do NOT include:", a1: "strings", a2: "booleans", a3: "alerts", a4: "numbers", correctAnswer: "alerts" },
 
-    { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostophes", correctAnswer: "parenthesis" }
+    { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostrophes", correctAnswer: "parenthesis" }
 ];
 
 // function to start the quiz
 var startQuiz = function() {
     contentHeading.innerText = "Coding Quiz Challenge";
     contentArea.innerHTML = "<p>Click the button below to begin!</p></br><button id='start-button'>Start Quiz!</button>";
-    document.getElementById("start-button").addEventListener("click", presentQuestion); 
+    document.getElementById("start-button").addEventListener("click", presentQuestion);
+    return;
 };
 
 // function to handle presentation of questions
@@ -29,13 +30,16 @@ var presentQuestion = function() {
     
     // Create section for the answers
     contentArea.innerHTML = 
-        "<button class='answer-button'>" + questions[questionCount].a1 + 
-        "</button></br><button class='answer-button'>" + questions[questionCount].a2 + 
-        "</button></br><button class='answer-button'>" + questions[questionCount].a3 +
-        "</button></br><button class='answer-button'>" + questions[questionCount].a4 + 
+        "<button id='answer-button1'>" + questions[questionCount].a1 + 
+        "</button></br><button id='answer-button2'>" + questions[questionCount].a2 + 
+        "</button></br><button id='answer-button3'>" + questions[questionCount].a3 +
+        "</button></br><button id='answer-button4'>" + questions[questionCount].a4 + 
         "</button>";
-    
-    contentArea.addEventListener("click", confirmAnswer); 
+
+    document.getElementById("answer-button1").addEventListener("click", confirmAnswer);
+    document.getElementById("answer-button2").addEventListener("click", confirmAnswer);
+    document.getElementById("answer-button3").addEventListener("click", confirmAnswer);
+    document.getElementById("answer-button4").addEventListener("click", confirmAnswer);
 };
 
 // I need a function to check the answer and it should be triggered 
@@ -43,7 +47,6 @@ var presentQuestion = function() {
 var confirmAnswer = function(event) {
     // set targetEl variable equal to the element that was clicked
     var targetEl = event.target;
-    console.log(targetEl.innerText);
     // Conditional statement to check if the answer is right
     if (targetEl.textContent === questions[questionCount].correctAnswer) {
         window.alert("CORRECT!!!");
