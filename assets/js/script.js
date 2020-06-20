@@ -97,11 +97,30 @@ var allDone = function() {
     contentHeading.innerText = "All Done!";
     // Editing HTML elements to show end of quiz info
     contentArea.innerHTML = "<p>Your final score is " + counter + "</p><br/>";
+    // create text input field for user initials
     var enterHighScore = document.createElement("input");
+    // set the name of the input so we can grab it later
+    enterHighScore.name = "user-initials";
+    // Add input field to the content area
     contentArea.appendChild(enterHighScore);
+    // create a button to submit the user initials
     var submitButton = document.createElement("button");
     submitButton.textContent = "Submit";
+    submitButton.id = "submit-button";
     contentArea.appendChild(submitButton);
+    document.getElementById("submit-button").addEventListener("click", handleSubmit);
+};
+
+//function that is triggered by the submit of the initials
+var handleSubmit = function() {
+    // remove content from the header
+    var headerEl = document.querySelector("#header");
+    headerEl.textContent = "";
+    // grab the user inputted initials
+    var initialInput = document.querySelector("input[name='user-initials'");
+    // set the new content heading to 'High Scores'
+    contentHeading.innerText = "High Scores";
+    contentArea.textContent = counter + initialInput.value;
 };
 
 startQuiz();
