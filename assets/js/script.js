@@ -15,15 +15,12 @@ var questions = [
     { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostophes", correctAnswer: "parenthesis" }
 ];
 
-
 // function to start the quiz
 var startQuiz = function() {
     contentHeading.innerText = "Coding Quiz Challenge";
     contentArea.innerHTML = "<p>Click the button below to begin!</p></br><button id='start-button'>Start Quiz!</button>";
-    quizContentEl.addEventListener("click", presentQuestion); 
+    document.getElementById("start-button").addEventListener("click", presentQuestion); 
 };
-
-
 
 // function to handle presentation of questions
 var presentQuestion = function() {
@@ -32,13 +29,13 @@ var presentQuestion = function() {
     
     // Create section for the answers
     contentArea.innerHTML = 
-        "<button>" + questions[questionCount].a1 + 
-        "</button></br><button>" + questions[questionCount].a2 + 
-        "</button></br><button>" + questions[questionCount].a3 +
-        "</button></br><button>" + questions[questionCount].a4 + 
+        "<button class='answer-button'>" + questions[questionCount].a1 + 
+        "</button></br><button class='answer-button'>" + questions[questionCount].a2 + 
+        "</button></br><button class='answer-button'>" + questions[questionCount].a3 +
+        "</button></br><button class='answer-button'>" + questions[questionCount].a4 + 
         "</button>";
-
-    quizContentEl.addEventListener("click", confirmAnswer); 
+    
+    contentArea.addEventListener("click", confirmAnswer); 
 };
 
 // I need a function to check the answer and it should be triggered 
