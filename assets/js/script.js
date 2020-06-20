@@ -10,13 +10,17 @@ var contentArea = document.getElementById("content-area");
 var counter = 75;
 // variable to represent the html 
 var countDownEl = document.getElementById("count");
+// Make the correct or wrong variable global so I can affect it  in functions
+var correctOrWrong = "";
 
 // Function to begin timer upon fulfilling the startQuiz function
 var startTimer = function() {
     var countDown = function() {
         countDownEl.innerText = counter;
         counter--;
-        if (counter === -1 || questionCount === questions.length) {
+        // This is my conditional statement to check if the quiz is still going
+        // by checking the timer and the question count
+        if (counter === 0 || questionCount === questions.length) {
             clearInterval(timer);
             allDone();
         }
@@ -28,12 +32,13 @@ var startTimer = function() {
     } 
 };
 
-// Let's actually make it an array of objects (Cool!!)
-// Let's create an object for our first question
+// Create an array ofobjects for my questions and answers
 var questions = [
     { question: "Commonly used data types do NOT include:", a1: "strings", a2: "booleans", a3: "alerts", a4: "numbers", correctAnswer: "alerts" },
 
-    { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostrophes", correctAnswer: "parenthesis" }
+    { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostrophes", correctAnswer: "parenthesis" },
+
+    { question: "Arrays in Javascript can be used to store________.", a1: "numbers and strings", a2: "other arrays", a3: "booleans", a4: "all of the above", correctAnswer: "all of the above" }
 ];
 
 // function to start the quiz
@@ -58,6 +63,11 @@ var presentQuestion = function() {
         "</button></br><button id='answer-button4'>" + questions[questionCount].a4 + 
         "</button>";
 
+    // Create a reference for the heading that will say correct or wrong
+    var feedback = document.createElement("h2");
+    feedback.textContent = correctOrWrong;
+    contentArea.appendChild(feedback);
+
     document.getElementById("answer-button1").addEventListener("click", confirmAnswer);
     document.getElementById("answer-button2").addEventListener("click", confirmAnswer);
     document.getElementById("answer-button3").addEventListener("click", confirmAnswer);
@@ -67,16 +77,15 @@ var presentQuestion = function() {
 // I need a function to check the answer and it should be triggered 
 // by an event listener at the end of the display question function
 var confirmAnswer = function(event) {
+    
     // set targetEl variable equal to the element that was clicked
     var targetEl = event.target;
     // Conditional statement to check if the answer is right
     if (targetEl.textContent === questions[questionCount].correctAnswer) {
-        window.alert("CORRECT!!!");
-        //need to add time to the clock
+        correctOrWrong = "Correct!"
     } else {
-        window.alert("NOT EVEN CLOSE!!!");
+        correctOrWrong = "Wrong!";
         counter -= 20;
-        //need to take time off the clock
     }
     questionCount++;
     return presentQuestion();
@@ -86,7 +95,6 @@ var confirmAnswer = function(event) {
 var allDone = function() {
     // Create a new heading for the all done page
     contentHeading.innerText = "All Done!";
-    console.log(questions.length);
     // Editing HTML elements to show end of quiz info
     contentArea.innerHTML = "<p>Your final score is " + counter + "</p><br/>";
     var enterHighScore = document.createElement("input");
