@@ -6,6 +6,21 @@ var questionCount = 0;
 var contentHeading = document.getElementById("content-heading");
 // This is a reference to my content div below my h2 in the body
 var contentArea = document.getElementById("content-area");
+//variable for the start of the counter
+var counter = 75;
+// variable to represent the html 
+var countDownEl = document.getElementById("count");
+// Let's do the timer in a global situation
+var countDown = function() {
+    countDownEl.innerText = counter;
+    counter--;
+    if (counter === 0) {
+        clearInterval(timer);
+    }
+};
+
+//function for the timer 
+var timer = setInterval(countDown, 1000);
 
 // Let's actually make it an array of objects (Cool!!)
 // Let's create an object for our first question
