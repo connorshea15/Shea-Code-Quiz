@@ -10,17 +10,22 @@ var contentArea = document.getElementById("content-area");
 var counter = 75;
 // variable to represent the html 
 var countDownEl = document.getElementById("count");
-// Let's do the timer in a global situation
-var countDown = function() {
-    countDownEl.innerText = counter;
-    counter--;
-    if (counter === 0) {
-        clearInterval(timer);
-    }
-};
 
-//function for the timer 
-var timer = setInterval(countDown, 1000);
+// Function to begin timer upon fulfilling the startQuiz function
+var startTimer = function() {
+    var countDown = function() {
+        countDownEl.innerText = counter;
+        counter--;
+        if (counter === -1) {
+            clearInterval(timer);
+        }
+    };
+    // Create the timer funciton as the quiz starts
+    if (counter === 75) {
+        //function for the timer 
+        var timer = setInterval(countDown, 1000);
+    } 
+};
 
 // Let's actually make it an array of objects (Cool!!)
 // Let's create an object for our first question
@@ -35,6 +40,7 @@ var startQuiz = function() {
     contentHeading.innerText = "Coding Quiz Challenge";
     contentArea.innerHTML = "<p>Click the button below to begin!</p></br><button id='start-button'>Start Quiz!</button>";
     document.getElementById("start-button").addEventListener("click", presentQuestion);
+    document.getElementById("start-button").addEventListener("click", startTimer);
     return;
 };
 
@@ -74,5 +80,7 @@ var confirmAnswer = function(event) {
     questionCount++;
     return presentQuestion();
 };
+
+// I need a funciton here to bring up the all done page
 
 startQuiz();
