@@ -82,5 +82,18 @@ var confirmAnswer = function(event) {
 };
 
 // I need a funciton here to bring up the all done page
+var allDone = function() {
+    // Create a new heading for the all done page
+    contentHeading.innerText = "All Done!";
 
-startQuiz();
+    contentArea.innerHTML = "<p>Your final score is " + counter + "</p><br/>";
+    var enterHighScore = document.createElement("input");
+    contentArea.appendChild(enterHighScore);
+    var submitButton = document.createElement("button");
+    submitButton.textContent = "Submit";
+    contentArea.appendChild(submitButton);
+};
+
+
+//startQuiz();
+allDone();
