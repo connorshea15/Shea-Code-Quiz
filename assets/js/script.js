@@ -68,6 +68,7 @@ var confirmAnswer = function(event) {
         //need to add time to the clock
     } else {
         window.alert("NOT EVEN CLOSE!!!");
+        counter -= 20;
         //need to take time off the clock
     }
     questionCount++;
