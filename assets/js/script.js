@@ -122,17 +122,34 @@ var handleSubmit = function() {
     var initialInput = document.querySelector("input[name='user-initials'");
     // set the new content heading to 'High Scores'
     contentHeading.innerText = "High Scores";
-    contentArea.textContent = counter + initialInput.value;
+    //contentArea.textContent = counter + initialInput.value;
     var scoreAndInitials = {
         initials: initialInput.value,
         score: counter
     };
     scores.push(scoreAndInitials);
     saveScores();
+    //contentArea.textContent = localStorage.getItem("scores");
+    scores = localStorage.getItem("scores");
+    scores = JSON.parse(scores);
+    console.dir(scores);
+    contentArea.textContent = scores[0].initials;
 };
 
 var saveScores = function() {
     localStorage.setItem("scores", JSON.stringify(scores));
-}
+};
 
+// this function will update my scores array every time the browser is refreshed
+var getScores = function() {
+    scores = localStorage.getItem("scores");
+    scores = JSON.parse(scores);
+
+}; 
+
+// this function will print the highscores in li elements in the contentSection
+/*var printHighScores = function() {
+
+}; */
+getScores();
 startQuiz();
