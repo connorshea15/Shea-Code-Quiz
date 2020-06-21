@@ -122,6 +122,7 @@ var handleSubmit = function() {
     var initialInput = document.querySelector("input[name='user-initials'");
     // set the new content heading to 'High Scores'
     contentHeading.innerText = "High Scores";
+    contentArea.textContent = "";
     //contentArea.textContent = counter + initialInput.value;
     var scoreAndInitials = {
         initials: initialInput.value,
@@ -133,7 +134,7 @@ var handleSubmit = function() {
     scores = localStorage.getItem("scores");
     scores = JSON.parse(scores);
     console.dir(scores);
-    contentArea.textContent = scores[0].initials;
+    printHighScores();
 };
 
 var saveScores = function() {
@@ -142,14 +143,22 @@ var saveScores = function() {
 
 // this function will update my scores array every time the browser is refreshed
 var getScores = function() {
-    scores = localStorage.getItem("scores");
-    scores = JSON.parse(scores);
-
+   // if (scores.length > 0) {
+        scores = localStorage.getItem("scores");
+        scores = JSON.parse(scores);
+   // }
 }; 
 
 // this function will print the highscores in li elements in the contentSection
-/*var printHighScores = function() {
-
-}; */
+var printHighScores = function() {
+    // create ordered list element
+    var orderedListEl = document.createElement("ol");
+    for (i = 0; i < scores.length; i++) {
+        var listItemEl = document.createElement("li");
+        listItemEl.textContent = scores[i].initials + " - " + scores[i].score;
+        orderedListEl.appendChild(listItemEl);
+        contentArea.appendChild(orderedListEl);
+    };
+}; 
 getScores();
 startQuiz();
