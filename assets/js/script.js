@@ -147,9 +147,6 @@ var getScores = function() {
 
 // this function will print the highscores in li elements in the contentSection
 var printHighScores = function() {
-    // remove content from the header
-    var headerEl = document.querySelector("#header");
-    headerEl.textContent = "";
     // set the new content heading to 'High Scores'
     contentHeading.innerText = "High Scores";
     contentArea.textContent = "";
