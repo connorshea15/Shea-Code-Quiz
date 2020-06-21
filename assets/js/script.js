@@ -45,6 +45,7 @@ var questions = [
 
 // function to start the quiz
 var startQuiz = function() {
+    // I probably need to dynamically create the header at the start of each quiz
     questionCount = 0;
     counter = 75;
     contentHeading.innerText = "Coding Quiz Challenge";
