@@ -12,6 +12,8 @@ var counter = 75;
 var countDownEl = document.getElementById("count");
 // Make the correct or wrong variable global so I can affect it  in functions
 var correctOrWrong = "";
+// this array will store my objects containing initials and highscores
+var scores = [];
 
 // Function to begin timer upon fulfilling the startQuiz function
 var startTimer = function() {
@@ -120,7 +122,16 @@ var handleSubmit = function() {
     var initialInput = document.querySelector("input[name='user-initials'");
     // set the new content heading to 'High Scores'
     contentHeading.innerText = "High Scores";
-    contentArea.textContent = counter + initialInput.value;
+    var scoreAndInitials = {
+        initials: initialInput.value,
+        score: counter
+    };
+    scores.push(scoreAndInitials);
+    //saveScores();
 };
+/*
+var saveScores = function() {
+    localStorage.setItem("scores", JSON.stringify(scores));
+}; */
 
 startQuiz();
