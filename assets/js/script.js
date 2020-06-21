@@ -115,22 +115,15 @@ var allDone = function() {
 
 //function that is triggered by the submit of the initials
 var handleSubmit = function() {
-    // remove content from the header
-    var headerEl = document.querySelector("#header");
-    headerEl.textContent = "";
     // grab the user inputted initials
     var initialInput = document.querySelector("input[name='user-initials'");
-    // set the new content heading to 'High Scores'
-    contentHeading.innerText = "High Scores";
-    contentArea.textContent = "";
-    //contentArea.textContent = counter + initialInput.value;
+    // create object to score initials and score
     var scoreAndInitials = {
         initials: initialInput.value,
         score: counter
     };
     scores.push(scoreAndInitials);
     saveScores();
-    //contentArea.textContent = localStorage.getItem("scores");
     scores = localStorage.getItem("scores");
     scores = JSON.parse(scores);
     console.dir(scores);
@@ -143,14 +136,18 @@ var saveScores = function() {
 
 // this function will update my scores array every time the browser is refreshed
 var getScores = function() {
-   // if (scores.length > 0) {
         scores = localStorage.getItem("scores");
         scores = JSON.parse(scores);
-   // }
 }; 
 
 // this function will print the highscores in li elements in the contentSection
 var printHighScores = function() {
+    // remove content from the header
+    var headerEl = document.querySelector("#header");
+    headerEl.textContent = "";
+    // set the new content heading to 'High Scores'
+    contentHeading.innerText = "High Scores";
+    contentArea.textContent = "";
     // create ordered list element
     var orderedListEl = document.createElement("ol");
     for (i = 0; i < scores.length; i++) {
@@ -160,5 +157,7 @@ var printHighScores = function() {
         contentArea.appendChild(orderedListEl);
     };
 }; 
+
 getScores();
 startQuiz();
+document.getElementById("high-score-button").addEventListener("click", printHighScores);
