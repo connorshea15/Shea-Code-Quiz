@@ -124,9 +124,9 @@ var handleSubmit = function() {
     };
     scores.push(scoreAndInitials);
     saveScores();
-    scores = localStorage.getItem("scores");
-    scores = JSON.parse(scores);
-    console.dir(scores);
+    getScores();
+    // sort my array of objects in descending order of scores
+    scores.sort((a, b) => b.score - a.score);
     printHighScores();
 };
 
@@ -136,8 +136,10 @@ var saveScores = function() {
 
 // this function will update my scores array every time the browser is refreshed
 var getScores = function() {
+    //if (scores.length > 0) {
         scores = localStorage.getItem("scores");
         scores = JSON.parse(scores);
+   //}
 }; 
 
 // this function will print the highscores in li elements in the contentSection
@@ -158,6 +160,7 @@ var printHighScores = function() {
     };
 }; 
 
-getScores();
+//getScores();
 startQuiz();
 document.getElementById("high-score-button").addEventListener("click", printHighScores);
+getScores();
