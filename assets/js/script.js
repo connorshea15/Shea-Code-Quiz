@@ -45,6 +45,8 @@ var questions = [
 
 // function to start the quiz
 var startQuiz = function() {
+    questionCount = 0;
+    counter = 75;
     contentHeading.innerText = "Coding Quiz Challenge";
     contentArea.innerHTML = "<p>Click the button below to begin!</p></br><button id='start-button'>Start Quiz!</button>";
     document.getElementById("start-button").addEventListener("click", presentQuestion);
@@ -136,10 +138,10 @@ var saveScores = function() {
 
 // this function will update my scores array every time the browser is refreshed
 var getScores = function() {
-    //if (scores.length > 0) {
+    if (scores.length > 0) {
         scores = localStorage.getItem("scores");
         scores = JSON.parse(scores);
-   //}
+   }
 }; 
 
 // this function will print the highscores in li elements in the contentSection
@@ -158,7 +160,26 @@ var printHighScores = function() {
         orderedListEl.appendChild(listItemEl);
         contentArea.appendChild(orderedListEl);
     };
+    // create a button to go back to the start
+    var goBackButton = document.createElement("button");
+    goBackButton.textContent = "Go Back";
+    goBackButton.id = "go-back";
+    contentArea.appendChild(goBackButton);
+    document.getElementById("go-back").addEventListener("click", startQuiz);
+
+    // Create a button to clear the high scores
+    var clearStorage = document.createElement("button");
+    clearStorage.textContent = "Clear High Scores";
+    clearStorage.id = "clear-storage";
+    contentArea.appendChild(clearStorage);
+    document.getElementById("clear-storage").addEventListener("click", clearHighScores);
 }; 
+
+var clearHighScores = function() {
+    localStorage.clear();
+    scores = [];
+    startQuiz();
+};
 
 //getScores();
 startQuiz();
