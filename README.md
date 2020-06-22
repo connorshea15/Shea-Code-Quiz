@@ -12,7 +12,7 @@ To sharpen up the Javascript knowledge of aspiring coders everywhere
 ![](/assets/images/mockup.JPG)
 
 ## Website
-
+https://connorshea15.github.io/Shea-Code-Quiz/
 
 ## Contribution
 Made by Connor Shea
