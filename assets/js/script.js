@@ -40,7 +40,13 @@ var questions = [
 
     { question: "The condition in an If/Else statement is enclosed with:", a1: "brackets", a2: "parenthesis", a3: "quotes", a4: "apostrophes", correctAnswer: "parenthesis" },
 
-    { question: "Arrays in Javascript can be used to store________.", a1: "numbers and strings", a2: "other arrays", a3: "booleans", a4: "all of the above", correctAnswer: "all of the above" }
+    { question: "Arrays in Javascript can be used to store________.", a1: "numbers and strings", a2: "other arrays", a3: "booleans", a4: "all of the above", correctAnswer: "all of the above" },
+
+    { question: "String variables must be enclosed in ________ in order to be assigned to a variable.", a1: "parenthesis", a2: "quotes", a3: "good friends", a4: "all of the above", correctAnswer: "quotes" },
+
+    { question: "Javascript commands should be followed by a ________.", a1: ";", a2: "<3", a3: ".", a4: "js", correctAnswer: ";" },
+
+    { question: "script.___", a1: "com", a2: "js", a3: "css", a4: "jpg", correctAnswer: "js" }
 ];
 
 // function to start the quiz
@@ -89,7 +95,7 @@ var confirmAnswer = function(event) {
         correctOrWrong = "Correct!"
     } else {
         correctOrWrong = "Wrong!";
-        counter -= 20;
+        counter -= 10;
     }
     questionCount++;
     return presentQuestion();
